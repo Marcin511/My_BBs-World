@@ -1,22 +1,21 @@
-package projekt.My_BB_world.users;
+package projekt.My_BB_world.lodout;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Entity
-public class User {
+public class Attachment {
     @Id
-    private Long id;
-    private String userName;
-    private String email;
-    private String password;
+    private Long attachmentId;
+    private String AttachmentType;
 }
