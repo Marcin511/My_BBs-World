@@ -21,21 +21,21 @@ public class AttachmentService {
     List<Attachment> showAttachment(){
         return attachmentRepository.findAll();
     }
-    Attachment getAttachment(Long id){
-        return attachmentRepository.findAttachmentById(id)
+    Attachment getAttachment(Long attachmentId){
+        return attachmentRepository.findAttachmentById(attachmentId)
                 .orElseThrow(()-> new NoSuchElementException("Attachment not exist"));
 
     }
-    Attachment updateAttachment(Long id, @RequestBody Attachment attachmentToUpdate){
-        return attachmentRepository.findAttachmentById(id)
-                .map(attachment ->{attachment.setAttachmentType(attachment.getAttachmentType());
+    Attachment updateAttachment(Long attachmentId, @RequestBody Attachment attachmentToUpdate){
+        return attachmentRepository.findAttachmentById(attachmentId)
+                .map(attachment ->{attachmentToUpdate.setAttachmentType(attachment.getAttachmentType());
                     return attachmentRepository.save(attachment);})
                 .orElseThrow(()-> new NoSuchElementException("Attachment not exist"));
     }
-    Attachment deleteAttachment(Long id){
-        Attachment attachment = attachmentRepository.findAttachmentById(id)
+    Attachment deleteAttachment(Long attachmentId){
+        Attachment attachment = attachmentRepository.findAttachmentById(attachmentId)
                 .orElseThrow(()-> new NoSuchElementException("Attachment not exist"));
-        attachmentRepository.deleteById(id);
+        attachmentRepository.deleteById(attachmentId);
         return attachment;
     }
 }
